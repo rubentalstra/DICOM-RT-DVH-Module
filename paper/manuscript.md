@@ -280,6 +280,24 @@ This study has several limitations that should be addressed in future work:
 
 The authors declare no conflicts of interest.
 
+## Use of Artificial Intelligence
+
+AI-assisted coding tools (Claude Code, Anthropic) were used during
+implementation of the validation software and in maintaining the associated
+code repository. AI tools were not used to draft the manuscript, and were not
+used to perform or interpret the analysis; the scientific text, the choice of
+validation strategy, the interpretation of the results and the conclusions are
+the authors' own. No data were generated, altered or selected by AI. AI tools
+are not authors and are not credited as such; the authors take full
+responsibility for the entire contents of this article, including all
+AI-assisted code.
+
+The validity of the reported results does not depend on the provenance of the
+implementation. Tolerance thresholds were pre-specified before any experiment
+was run, every comparison is made against external ground truth rather than the
+software's own output, and the complete experiment is deterministic and
+reproducible from the published scripts.
+
 ## Data Availability
 
 The validation code and experiment scripts are available at [repository URL, DOI to be assigned via Zenodo]. The Nelms analytical phantom dataset was obtained from the Wayback Machine archive of canislupusllc.com. The dicompyler-core test dataset and SlicerRtData Eclipse phantoms are publicly available on GitHub. Clinical RayStation data cannot be shared due to institutional data governance requirements.

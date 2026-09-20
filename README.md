@@ -47,3 +47,9 @@ must not change. Values come from Table 4 of the research proposal.
 Clinical data (DICOM files) is not tracked in version control.
 Use the scripts in `scripts/` to download public datasets, and
 export clinical cases from RayStation separately.
+
+## Use of AI
+
+AI-assisted coding tools were used for the implementation and repository
+tooling, not for writing the manuscript or interpreting the results.
+See `AI_STATEMENT.md` for the full declaration.
