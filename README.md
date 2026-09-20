@@ -1,5 +1,10 @@
 # DVH Validation Experiment
 
+[![DOI](https://zenodo.org/badge/1378542894.svg)](https://doi.org/10.5281/zenodo.22861419)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python 3.14](https://img.shields.io/badge/Python-3.14-blue.svg)](https://www.python.org/)
+[![Cite this repository](https://img.shields.io/badge/cite-CITATION.cff-green.svg)](CITATION.cff)
+
 Validating DICOM RT DVH files at 1 cGy resolution as an intermediate
 data layer for dose-volume parameter extraction.
 

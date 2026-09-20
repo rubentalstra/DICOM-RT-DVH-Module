@@ -2,9 +2,6 @@
 # button (APA + BibTeX). Keep release-accurate: every release cut bumps
 # `version` + `date-released`.
 #
-# TODO after archiving the first release on Zenodo: uncomment the
-# `identifiers` block below and paste the CONCEPT DOI (the one that always
-# resolves to the latest archived release, not a version-specific DOI).
 cff-version: 1.2.0
 message: "If you use this software, please cite it using the metadata below."
 type: software
@@ -26,10 +23,10 @@ version: 1.0.0
 date-released: "2026-09-20"
 repository-code: "https://github.com/rubentalstra/DICOM-RT-DVH-Module"
 url: "https://github.com/rubentalstra/DICOM-RT-DVH-Module"
-# identifiers:
-#   - type: doi
-#     value: 10.5281/zenodo.XXXXXXXX
-#     description: "The concept DOI of the Zenodo software archive; resolves to the latest archived release."
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22861419
+    description: "The concept DOI of the Zenodo software archive; resolves to the latest archived release."
 keywords:
   - DICOM
   - DICOM RT

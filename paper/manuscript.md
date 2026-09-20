@@ -300,7 +300,7 @@ reproducible from the published scripts.
 
 ## Data Availability
 
-The validation code and experiment scripts are available at [repository URL, DOI to be assigned via Zenodo]. The Nelms analytical phantom dataset was obtained from the Wayback Machine archive of canislupusllc.com. The dicompyler-core test dataset and SlicerRtData Eclipse phantoms are publicly available on GitHub. Clinical RayStation data cannot be shared due to institutional data governance requirements.
+The validation code and experiment scripts are available at https://github.com/rubentalstra/DICOM-RT-DVH-Module and archived on Zenodo (DOI: 10.5281/zenodo.22861419, which resolves to the latest archived release). The Nelms analytical phantom dataset was obtained from the Wayback Machine archive of canislupusllc.com. The dicompyler-core test dataset and SlicerRtData Eclipse phantoms are publicly available on GitHub. Clinical RayStation data cannot be shared due to institutional data governance requirements.
 
 ---
 
