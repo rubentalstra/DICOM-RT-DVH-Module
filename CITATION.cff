@@ -1,28 +1,49 @@
+# Citation metadata (CFF 1.2.0) — renders GitHub's "Cite this repository"
+# button (APA + BibTeX). Keep release-accurate: every release cut bumps
+# `version` + `date-released`.
+#
+# TODO after archiving the first release on Zenodo: uncomment the
+# `identifiers` block below and paste the CONCEPT DOI (the one that always
+# resolves to the latest archived release, not a version-specific DOI).
 cff-version: 1.2.0
 message: "If you use this software, please cite it using the metadata below."
+type: software
 title: "DICOM RT DVH Validation: an intermediate data layer for dose-volume parameter extraction"
 abstract: >-
   Validation software for the use of DICOM RT DVH files at 1 cGy resolution as
   an intermediate caching layer between DICOM-RT source data held in a PACS and
-  downstream clinical data repositories. Contains the DVH computation and
-  caching modules, the dose-volume parameter extraction code, the six-phase
-  experiment runner and the unit test suite used to validate the cache against
-  analytical phantoms, published reference values and treatment planning system
-  data.
-type: software
+  downstream clinical data repositories. From RT Dose and RT Structure Set
+  inputs it writes one DICOM RT DVH object per structure (PS3.3 Section
+  C.8.8.4), encoding the full differential dose-volume histogram, so that any
+  dose-volume parameter (Vx, Dx, Dxcc, mean dose, gEUD, NTCP/TCP) can be derived
+  later without returning to the PACS. Contains the computation and caching
+  modules, the parameter extraction code, the six-phase experiment runner and
+  the unit test suite used to validate the cache against analytical phantoms
+  with closed-form DVHs, published reference values, and clinical plans from
+  independent treatment planning systems.
 license: MIT
 version: 1.0.0
 date-released: "2026-09-20"
 repository-code: "https://github.com/rubentalstra/DICOM-RT-DVH-Module"
 url: "https://github.com/rubentalstra/DICOM-RT-DVH-Module"
+# identifiers:
+#   - type: doi
+#     value: 10.5281/zenodo.XXXXXXXX
+#     description: "The concept DOI of the Zenodo software archive; resolves to the latest archived release."
 keywords:
-  - dose-volume histogram
   - DICOM
-  - radiation therapy
-  - data management
+  - DICOM RT
+  - dose-volume histogram
+  - DVH
   - DVH caching
-  - clinical data repository
+  - radiotherapy
+  - radiation oncology
+  - PACS
   - openEHR
+  - clinical data repository
+  - health informatics
+  - healthcare interoperability
+  - data management
 authors:
   - family-names: Talstra
     given-names: "R.D."
