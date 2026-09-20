@@ -53,6 +53,22 @@ Clinical data (DICOM files) is not tracked in version control.
 Use the scripts in `scripts/` to download public datasets, and
 export clinical cases from RayStation separately.
 
+## openEHR archetype and template
+
+`openEHR/` contains the archetype and operational template for storing derived
+dose-volume parameters in an openEHR clinical data repository — the Level 2 to
+Level 3 pathway. Metric names are not enumerated, so new parameters need no
+schema change.
+
+**These files are not MIT-licensed.** See `openEHR/README.md`.
+
+## Licence
+
+Code and documentation in this repository are MIT licensed (see `LICENSE`),
+with one exception: the contents of `openEHR/` are licensed CC BY-SA 4.0, and
+`openEHR/dvh_report.opt` additionally incorporates material © openEHR
+Foundation. See `openEHR/README.md` for the details.
+
 ## Use of AI
 
 AI-assisted coding tools were used for the implementation and repository

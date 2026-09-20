@@ -1,0 +1,208 @@
+archetype (adl_version=1.4; uid=a1b2c3d4-e5f6-7890-abcd-ef1234567890)
+	openEHR-EHR-CLUSTER.radiotherapy_dvh.v0
+
+concept
+	[at0000]	-- Radiotherapy DVH report
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["name"] = <"Ruben Talstra">
+		["organisation"] = <"Hanze University of Applied Sciences Groningen">
+		["email"] = <"r.d.talstra@st.hanze.nl">
+		["date"] = <"2026-05-26">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record arbitrary dose-volume histogram (DVH) parameters derived from the DICOM RT DVH caching layer, for radiation therapy structures. Metric names are NOT enumerated in the archetype, so any current or future dose-volume parameter (V20, V55, D2, D95, D0.03cc, Dmean, gEUD_a5, NTCP_LKB, etc.) can be stored without schema change.">
+			use = <"Use within the 'Specific details' SLOT (at0021) of CLUSTER.radiotherapy.v0 to add per-structure DVH metrics to a radiotherapy procedure record. Each structure (e.g., PTV, Heart, Lung) gets a repeating 'Structure dose report' block containing its volume and a free list of named dose-volume metrics.
+
+Treatment-level data (cumulative dose, fractions, technique booleans, radiation type) live in the parent CLUSTER.radiotherapy.v0 and procedure-level data (start/end dates, ISM_TRANSITION) live in the grandparent ACTION.procedure.v1 — do not duplicate them here.
+
+Mapping to clinical audit registries (DLCA-R, NBCA-R) and secondary-use standards (OMOP, CDISC) is done downstream via configurable YAML mappings against the metric_name field; no registry semantics are baked into the archetype itself.">
+			keywords = <"DVH", "dose-volume histogram", "radiotherapy", "radiation therapy", "DICOM RT DVH", "DICA", "DLCA-R", "NBCA-R", "OAR", "PTV", "Vx", "Dx", "Dxcc", "Dmean", "Dmax", "gEUD", "NTCP", "TCP", "TG-263">
+			misuse = <"Do NOT store DVH curves in this archetype. Full differential dose-volume histograms remain in the DICOM RT DVH cache (PS3.3 C.8.8.4); only derived per-structure parameters are stored here.
+
+Do NOT store treatment-level parameters (prescription dose, fractions, technique) here — those belong in the parent CLUSTER.radiotherapy.v0.
+
+Do NOT store procedure-level timing (start/end of treatment, intent, performer) here — those belong in the grandparent ACTION.procedure.v1.">
+			copyright = <"Copyright (c) 2026 Ruben Talstra. Licensed under CC BY-SA 4.0.">
+		>
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0).">
+		["references"] = <"Talstra R.D. (2026). A DICOM RT DVH caching layer between PACS and clinical data repositories: bridging DICOM and openEHR. EHRCON26 abstract.
+DICOM PS3.3 C.8.8.4 — RT DVH Module (NEMA, ratified ISO 12052).
+DICOM PS3.3 C.8.8.6 — RT Structure Set Module.
+AAPM TG-263 — Standardizing Naming Conventions in Radiation Oncology (Med Phys 45(7), 2018).
+ICRU Reports 50, 62, 83 — Target volume definitions and dose reporting.
+DLCA-R v1.0.2 — Dutch Lung Cancer Audit Radiotherapy (DICA/MRDM, 2026).
+NBCA-R v1.1.2 — Dutch Breast Cancer Audit Radiotherapy (DICA/MRDM, 2026).
+openEHR-EHR-CLUSTER.radiotherapy.v0 — HiGHmed radiotherapy archetype (parent).">
+		["MD5-CAM-1.0.1"] = <"00000000000000000000000000000000">
+		["build_uid"] = <"f1e2d3c4-b5a6-7890-1234-567890abcdef">
+		["revision"] = <"0.0.2-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {	-- Radiotherapy DVH report
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {	-- Plan label
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			CLUSTER[at0010] occurrences matches {0..*} matches {	-- Structure dose report
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0011] matches {	-- Structure name
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0012] occurrences matches {0..1} matches {	-- Structure category
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0050, 	-- Target
+									at0051, 	-- Organ at Risk
+									at0052, 	-- External
+									at0053, 	-- PRV
+									at0054]	-- Planning
+								}
+							}
+						}
+					}
+					ELEMENT[at0013] occurrences matches {0..1} matches {	-- Structure volume
+						value matches {
+							C_DV_QUANTITY <
+								property = <[openehr::129]>
+								list = <
+									["1"] = <
+										units = <"cm3">
+										magnitude = <|>=0.0|>
+									>
+								>
+							>
+						}
+					}
+					CLUSTER[at0020] occurrences matches {0..*} matches {	-- Dose-volume metric
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0021] matches {	-- Metric name
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0022] matches {	-- Metric value
+								value matches {
+									DV_QUANTITY matches {*}
+								}
+							}
+							ELEMENT[at0023] occurrences matches {0..1} matches {	-- Metric formula
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0024] occurrences matches {0..1} matches {	-- Clinical threshold
+								value matches {
+									DV_QUANTITY matches {*}
+								}
+							}
+							ELEMENT[at0025] occurrences matches {0..1} matches {	-- Metric category
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Radiotherapy DVH report">
+					description = <"Dose-volume histogram parameters for radiation therapy structures, grouped by anatomical structure. Metric names are free text so any DVH parameter (current or future) can be stored without schema change.">
+				>
+				["at0001"] = <
+					text = <"Plan label">
+					description = <"Treatment planning system plan label or identifier (DICOM RTPlanLabel).">
+					comment = <"e.g., 'SABR_Lung_3x18Gy', 'Breast_L_15x2.67Gy'.">
+				>
+				["at0010"] = <
+					text = <"Structure dose report">
+					description = <"DVH parameters for a single anatomical structure (ROI). Repeats for each structure in the treatment plan.">
+				>
+				["at0011"] = <
+					text = <"Structure name">
+					description = <"Name of the anatomical structure as defined in the treatment planning system. Should follow TG-263 naming conventions where possible.">
+					comment = <"e.g., 'Heart', 'Lung_L', 'PTVp1', 'SpinalCanal', 'GTV_tumor'.">
+				>
+				["at0012"] = <
+					text = <"Structure category">
+					description = <"Functional category of the structure based on DICOM RTROIInterpretedType and TG-263 classification.">
+				>
+				["at0013"] = <
+					text = <"Structure volume">
+					description = <"Total volume of the structure in cubic centimetres.">
+				>
+				["at0020"] = <
+					text = <"Dose-volume metric">
+					description = <"A single dose-volume parameter for this structure. Repeats once per metric (e.g., V20, D95, Dmean, gEUD_a5, NTCP_LKB).">
+				>
+				["at0021"] = <
+					text = <"Metric name">
+					description = <"Short clinical name of the DVH metric. Free text — the archetype does not enumerate permitted names so any current or future DVH parameter can be stored.">
+					comment = <"e.g., 'V20' (=cm3 or %), 'V55' (=%), 'D95' (=Gy), 'D2' (=Gy), 'D0_03cc' (=Gy), 'Dmean' (=Gy), 'Dmax' (=Gy), 'MLD' (=Gy), 'gEUD_a5' (=Gy), 'NTCP_LKB' (=1).">
+				>
+				["at0022"] = <
+					text = <"Metric value">
+					description = <"The numerical result of the metric as a quantity with a UCUM unit. The unit is metric-dependent and is supplied by the writer: Gy for dose metrics (Dx, Dxcc, Dmean, Dmax, gEUD), cm3 or % for volume metrics (Vx), and the dimensionless unit '1' for probabilities (NTCP, TCP).">
+				>
+				["at0023"] = <
+					text = <"Metric formula">
+					description = <"The original formula expression evaluated to produce the metric value. Preserved for auditability and reproducibility.">
+					comment = <"e.g., 'V(20)', 'D(95)', 'Dcc(0.03)', 'V(55)/total_volume*100', 'gEUD(5)'.">
+				>
+				["at0024"] = <
+					text = <"Clinical threshold">
+					description = <"Optional clinical constraint or protocol threshold against which this metric is being evaluated.">
+					comment = <"e.g., for SpinalCanal D0.03cc the threshold might be 45 Gy; for Lung V20 the threshold might be 35%.">
+				>
+				["at0025"] = <
+					text = <"Metric category">
+					description = <"Optional free-text grouping of the metric for downstream filtering or reporting.">
+					comment = <"e.g., 'coverage', 'OAR_constraint', 'plan_quality', 'biological'.">
+				>
+				["at0050"] = <
+					text = <"Target">
+					description = <"Target volume: GTV, CTV, ITV, or PTV (ICRU 50/62/83).">
+				>
+				["at0051"] = <
+					text = <"Organ at Risk">
+					description = <"Normal tissue structure with dose constraints (OAR).">
+				>
+				["at0052"] = <
+					text = <"External">
+					description = <"External patient body contour.">
+				>
+				["at0053"] = <
+					text = <"PRV">
+					description = <"Planning Risk Volume: OAR plus margin (ICRU 62).">
+				>
+				["at0054"] = <
+					text = <"Planning">
+					description = <"Planning or optimisation helper structure.">
+				>
+			>
+		>
+	>
