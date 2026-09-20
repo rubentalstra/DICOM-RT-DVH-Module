@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+title: "DICOM RT DVH Validation: an intermediate data layer for dose-volume parameter extraction"
+abstract: >-
+  Validation software for the use of DICOM RT DVH files at 1 cGy resolution as
+  an intermediate caching layer between DICOM-RT source data held in a PACS and
+  downstream clinical data repositories. Contains the DVH computation and
+  caching modules, the dose-volume parameter extraction code, the six-phase
+  experiment runner and the unit test suite used to validate the cache against
+  analytical phantoms, published reference values and treatment planning system
+  data.
+type: software
+license: MIT
+version: 1.0.0
+date-released: "2026-09-20"
+repository-code: "https://github.com/rubentalstra/DICOM-RT-DVH-Module"
+url: "https://github.com/rubentalstra/DICOM-RT-DVH-Module"
+keywords:
+  - dose-volume histogram
+  - DICOM
+  - radiation therapy
+  - data management
+  - DVH caching
+  - clinical data repository
+  - openEHR
+authors:
+  - family-names: Talstra
+    given-names: "R.D."
+    orcid: "https://orcid.org/0009-0009-2758-0141"
+    affiliation: "Hanze University of Applied Sciences Groningen, Research group Digital Transformation, Groningen, Netherlands"
+  - family-names: Janssen
+    given-names: "R.W.J."
+    affiliation: "Isala, Isala Oncologisch Centrum, Zwolle, Netherlands"
+  - family-names: Lipman
+    given-names: "D."
+    affiliation: "Isala, Isala Oncologisch Centrum, Zwolle, Netherlands"
+  - family-names: "De Klerk"
+    given-names: "S."
+    affiliation: "Hanze University of Applied Sciences Groningen, Research group Digital Transformation, Groningen, Netherlands"
+  - family-names: Groenboom
+    given-names: "H.M."
+    affiliation: "Hanze University of Applied Sciences Groningen, Research group Digital Transformation, Groningen, Netherlands"

@@ -1,0 +1,39 @@
+{
+  "upload_type": "software",
+  "title": "DICOM RT DVH Validation: an intermediate data layer for dose-volume parameter extraction",
+  "description": "<p>Validation software for the use of DICOM RT DVH files at 1 cGy resolution as an intermediate caching layer between DICOM-RT source data held in a PACS and downstream clinical data repositories.</p><p>Contains the DVH computation and caching modules, the dose-volume parameter extraction code, the six-phase experiment runner and the unit test suite used to validate the cache against analytical phantoms, published reference values and treatment planning system data. Tolerance thresholds were pre-specified and locked before any experiment was run, and the complete experiment is deterministic and reproducible from the published scripts.</p><p>Clinical DICOM data are not included and cannot be shared due to institutional data governance requirements.</p>",
+  "license": "MIT",
+  "access_right": "open",
+  "creators": [
+    {
+      "name": "Talstra, R.D.",
+      "orcid": "0009-0009-2758-0141",
+      "affiliation": "Hanze University of Applied Sciences Groningen, Research group Digital Transformation, Groningen, Netherlands"
+    },
+    {
+      "name": "Janssen, R.W.J.",
+      "affiliation": "Isala, Isala Oncologisch Centrum, Zwolle, Netherlands"
+    },
+    {
+      "name": "Lipman, D.",
+      "affiliation": "Isala, Isala Oncologisch Centrum, Zwolle, Netherlands"
+    },
+    {
+      "name": "De Klerk, S.",
+      "affiliation": "Hanze University of Applied Sciences Groningen, Research group Digital Transformation, Groningen, Netherlands"
+    },
+    {
+      "name": "Groenboom, H.M.",
+      "affiliation": "Hanze University of Applied Sciences Groningen, Research group Digital Transformation, Groningen, Netherlands"
+    }
+  ],
+  "keywords": [
+    "dose-volume histogram",
+    "DICOM",
+    "radiation therapy",
+    "data management",
+    "DVH caching",
+    "clinical data repository",
+    "openEHR"
+  ]
+}
