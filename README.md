@@ -22,12 +22,20 @@ pip install -r requirements.txt
 | Phase | Description                              | Status  |
 |-------|------------------------------------------|---------|
 | 0     | Environment setup                        | Done    |
-| 1     | Analytical ground truth (Nelms phantoms) | Pending |
-| 2     | Cross-validation against commercial TPS  | Pending |
-| 3     | Clinical validation (RayStation data)    | Pending |
-| 4     | Format comparison (DICOM vs JSON)        | Pending |
-| 5     | Statistical analysis and reporting       | Pending |
-| 6     | Reproducibility and bias checks          | Pending |
+| 1     | Analytical ground truth (Nelms phantoms) | Done    |
+| 2     | Cross-validation against commercial TPS  | Done    |
+| 3     | Clinical validation (RayStation data)    | Done    |
+| 4     | Format comparison (DICOM vs JSON)        | Done    |
+| 5     | Statistical analysis and reporting       | Done    |
+| 6     | Reproducibility and bias checks          | Done    |
+
+## Results
+
+All six phases completed. Across 6,864 comparisons spanning 143 structures
+from 3 independent datasets, every tested parameter stayed within the
+pre-specified tolerances, with zero failures.
+
+Full write-up: `paper/manuscript.md`. Protocol: `dvh_experiment_plan.md`.
 
 ## Tolerances (locked 2026-03-27)
 
