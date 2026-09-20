@@ -1,0 +1,9 @@
+# Ignore all data files (DICOM, CSV results, downloaded datasets)
+# These are too large for version control and must be reproduced
+# from the download scripts or clinical export.
+nelms/
+dicompyler/
+slicerrt/
+clinical/
+results/
+_Behandelcodes.xlsx
